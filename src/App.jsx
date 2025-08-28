@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Card from "./components/Card/Card";
 
 function App() {
 
@@ -14,12 +15,11 @@ function App() {
   return (
     <>
       <div>
-        <h2> Library App </h2>
-        <div>
+        <div className="book-list" >
           {
             bestSellersData.map((best) => (
               <>
-                <li> {best.title} </li>
+                <Card bookItem={best} />
               </>
             ))
           }
