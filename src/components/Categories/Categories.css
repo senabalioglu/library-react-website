@@ -1,0 +1,24 @@
+.category-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 25px;
+    margin-left: 20px;
+   
+    width: 200px;
+
+}
+
+.category-container{
+    background-color: #737577;
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 200px;
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.category-text{
+    color: aliceblue;
+    text-shadow: 2px 2px 3px #ffffff5b;
+}

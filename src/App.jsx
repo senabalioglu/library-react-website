@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Card from "./components/Card/Card";
+import Categories from "./components/Categories/Categories";
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
   }, [])
   return (
     <>
-      <div>
+      <div style={{display: 'flex', flexDirection: 'row'}} >
+        <Categories />
         <div className="book-list" >
           {
             bestSellersData.map((best) => (
