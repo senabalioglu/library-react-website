@@ -1,0 +1,12 @@
+.search-bar-container{
+    border: 0.5px solid black;
+    min-width: 800px;
+
+}
+
+.search-bar-input{
+    border: none;
+    background-color: transparent;
+    padding: 15px;
+    min-width: 800px;
+}
