@@ -25,8 +25,8 @@ function Categories(){
         <>
         <div className="category-list" >
             {
-                categories.map((category) => (
-                    <div className="category-container" >
+                categories.map((category, index) => (
+                    <div key={index} className="category-container" >
                         <h3 className="category-text" > {category} </h3>
                     </div>
                 ))

@@ -1,11 +1,10 @@
 .category-list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 25px;
-    margin-left: 20px;
-   
-    width: 200px;
+    position: sticky;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 10px;
 
 }
 
