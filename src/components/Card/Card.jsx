@@ -3,6 +3,7 @@ import "./Card.css";
 function Card({ bookItem }) {
   return (
     <>
+    {/*
       <div className="book-container">
         <img className="book-img" src={bookItem.imgUrl} />
         <div className="inner-container">
@@ -11,6 +12,20 @@ function Card({ bookItem }) {
             <p className="book-author">{bookItem.author}</p>
           </div>
           <p className="book-price">{bookItem.price} ₺ </p>
+        </div>
+      </div>
+      */}
+
+      <div class="book read">
+        <div class="cover">
+          <img src={bookItem.imgUrl} />
+        </div>
+        <div class="description">
+          <p class="title"> {bookItem.title} <br />
+            <span class="author"> {bookItem.author} </span>
+            <br />
+            <span class="author"> {bookItem.price} </span>
+            </p>
         </div>
       </div>
     </>
