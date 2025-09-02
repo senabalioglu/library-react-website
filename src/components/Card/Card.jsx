@@ -1,6 +1,6 @@
 import "./Card.css";
 
-function Card({ bookItem }) {
+function Card({ bookItem, navigateFunc }) {
   return (
     <>
     {/*
@@ -16,15 +16,15 @@ function Card({ bookItem }) {
       </div>
       */}
 
-      <div class="book read">
-        <div class="cover">
+      <div onClick={navigateFunc} className="book read">
+        <div className="cover">
           <img src={bookItem.imgUrl} />
         </div>
-        <div class="description">
-          <p class="title"> {bookItem.title} <br />
-            <span class="author"> {bookItem.author} </span>
+        <div className="description">
+          <p className="title"> {bookItem.title} <br />
+            <span className="author"> {bookItem.author} </span>
             <br />
-            <span class="author"> {bookItem.price} </span>
+            <span className="author"> {bookItem.price} </span>
             </p>
         </div>
       </div>
