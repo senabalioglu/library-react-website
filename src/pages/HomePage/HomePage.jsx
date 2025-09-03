@@ -24,10 +24,10 @@ function HomePage() {
       .catch((err) => console.log(err));
   }, [text]);
 
-  const goToDetail = (b) => {
-    navigate(`/details/${b}`);
-  }
-
+  const goToDetail = (id, link) => {
+    navigate("/details", { state: { id, link } });
+  };
+  
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -79,7 +79,7 @@ function HomePage() {
             <Categories />
             <div className="book-list">
               {bestSellersData.map((best) => (
-                <Card navigateFunc={() => goToDetail(best.id)} key={best.id || best.link} bookItem={best} />
+                <Card navigateFunc={() => goToDetail(best.id, best.link)} key={best.id || best.link} bookItem={best} />
               ))}
             </div>
           </div>
