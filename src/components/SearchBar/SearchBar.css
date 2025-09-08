@@ -1,6 +1,8 @@
 .search-bar-container{
-    border: 0.5px solid black;
+    border: 1px solid #715A5A;
     min-width: 800px;
+    margin-top: 20px;
+    background-color: #37353E;
 
 }
 
