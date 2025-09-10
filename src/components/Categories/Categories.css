@@ -25,3 +25,8 @@
     color: rgb(56, 56, 56);
     text-shadow: 2px 2px 3px #0000005b;
 }
+
+.sub-categories-list{
+    display: flex;
+    flex-direction: column;
+}
