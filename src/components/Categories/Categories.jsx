@@ -6,6 +6,7 @@ function Categories() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [visible, setVisible] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [subCategoriesListData, setSubCategoriesListData] = useState([]);
 
   useEffect(() => {
     fetch(`${apiUrl}/Library/categories`)
@@ -15,7 +16,7 @@ function Categories() {
           setCategoriesData(data);
         } else {
           console.warn("API array dönmedi:", data);
-          setCategoriesData([]); // güvenlik için boş array
+          setCategoriesData([]);
         }
       })
       .catch((err) => console.log(err));
@@ -26,26 +27,57 @@ function Categories() {
     setVisible(!visible);
     console.log("is visible?", { visible });
   };
+
+  const selectedCategory = categoriesData.find(
+    (category) => category.id === selectedCategoryId
+  );
+
+  useEffect(() => {
+    if (!selectedCategory) return;
+
+    if (
+      selectedCategory.subCategories &&
+      selectedCategory.subCategories.length > 0
+    ) {
+      setSubCategoriesListData(selectedCategory.subCategories);
+    } else {
+      fetch(
+        `${apiUrl}/Library/categories/subCategories?categoryLink=${selectedCategory.externalId}`
+      )
+        .then((resp) => resp.json())
+        .then((data) => setSubCategoriesListData(data))
+        .catch((err) => console.log(err));
+    }
+  }, [selectedCategory]);
+
   return (
     <>
       <div className="category-list">
         {categoriesData.map((category) => (
-          <div onClick={ () => toggleSCVisible(category.id)} key={category.id} className="category-container">
+          <div
+            onClick={() => toggleSCVisible(category.id)}
+            key={category.id}
+            className="category-container"
+          >
             <h3 className="category-text">{category.categoryName}</h3>
           </div>
         ))}
       </div>
-      {visible && selectedCategoryId && (
-      <div className="sub-categories-list">
-        {categoriesData
-          .find((category) => category.id === selectedCategoryId)
-          ?.subCategories.map((sc, index) => (
+      {visible && (
+        <div className="sub-categories-list">
+          {subCategoriesListData.map((sc, index) => (
             <div className="category-container" key={index}>
-              <h3 className="category-text" >{sc.split("p")[1].trim()}</h3>
+              <h3 className="category-text">
+                {
+                  typeof sc === "string"
+                    ? sc.split("p")[1]?.trim()
+                    : sc.subCategoryName
+                }
+              </h3>
             </div>
           ))}
-      </div>
-    )}
+        </div>
+      )}
     </>
   );
 }
