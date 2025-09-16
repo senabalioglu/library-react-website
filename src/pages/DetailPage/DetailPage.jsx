@@ -16,6 +16,15 @@ function DetailPage() {
       .catch((error) => console.log(error));
   }, [id, link]);
 
+  const dateStr = detailInfo.date ;
+  const date = new Date(dateStr);
+
+  const formatted = date.toLocaleDateString("tr-TR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
   return (
     <>
       <div className="detail-outline">
@@ -28,25 +37,22 @@ function DetailPage() {
               <h1> {detailInfo.title} </h1>
               <h3> Author: {detailInfo.author} </h3>
               <h3> Publisher: {detailInfo.publisher} </h3>
+              <h3> Publish Date: {formatted} </h3>
+              <h2 style={{ color: "aliceblue", marginTop: 20 }}>
+                {detailInfo.pageNum} Pages{" "}
+              </h2>
               <div>
-                {detailInfo.categories.map((category, index) => (
-                  <div className="category-cont">
-                    <h4 key={index}> {category} </h4>
-                  </div>
-                ))}
+                <h1> {detailInfo.subCategories} </h1>
               </div>
             </div>
             <div className="price-container">
-              <h2 style={{ textAlign: "center" }}>
-                {" "}
-                Price: {detailInfo.price} ₺{" "}
-              </h2>
+              <h2 className="price-text"> {detailInfo.price} ₺ </h2>
             </div>
           </div>
         </div>
 
         <div className="desc-border">
-          <p> {detailInfo.description} </p>
+          <p className="desc-text"> {detailInfo.description} </p>
         </div>
       </div>
     </>
